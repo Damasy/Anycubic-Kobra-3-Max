@@ -3,7 +3,7 @@ This project is realted to Anycubic Kobra 3 Max ***Layer shifting*** issue after
 
 ## How to use this repo
 
-1. Copy code from `Layer-shift-gcode.md`.
+1. Copy code from `Layer-shift-gcode`.
 2. Open AnycubicSlicerNext.
 3. Open Printer settings.
 4. Open Machine G-code.
