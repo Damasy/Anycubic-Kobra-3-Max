@@ -8,6 +8,8 @@ G1 X445 F9000
 G1 X472.7 F400
 M400 P2000
 G1 E-1 F600
+
+; Raise safely above current print height
 G1 Z{max(toolchange_z+2.6, 7.0)} F600
 
 ; --- Simple purge ---
@@ -23,7 +25,12 @@ G28 X                                 ; Re-home X axis
 M400
 ; =====================================
 
-; --- Return to print ---
-G1 Z{toolchange_z} F3000
+; --- Return safely to print height ---
+{if toolchange_z <= 0}
+G1 Z2 F3000                           ; Startup toolchange: stay clear of bed
+{else}
+G1 Z{toolchange_z} F3000             ; Real toolchange: return to actual layer
+{endif}
+
 M400
 ; ================== FLUSH_END ==================
